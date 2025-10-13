@@ -9,7 +9,15 @@
   "scripts": {
     "cy:open" : "cypress open",
     "cy:run": "cypress run",
-    "test": "cypress test"
+  "test": "cypress run",
+  "test:open": "cypress open",
+  "test:record": "cypress run --record",
+  "test:reporter": "cypress run --reporter mochawesome",
+  "test:spec": "cypress run --spec",
+  "test:tag": "cypress run --tag",
+  "test:config": "cypress run --config",
+  "test:env": "cypress run --env",
+  "test:global": "cypress run --global"
   },
   "devDependencies": {
     "cypress": "^15.3.0"

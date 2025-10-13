@@ -3,23 +3,22 @@
 describe('Advance queries', () => {
   
     it('Clear', () => {
-          cy.visit('https://www.saucedemo.com/')  
-           cy.get('[placeholder="Username"]').type('Test string')
-           cy.get('[placeholder="Username"]').clear()
-            cy.get('[placeholder="Username"]').type('Test string2')
+        cy.visit('https://www.saucedemo.com/')  
+        cy.get('[placeholder="Username"]').type('Test string')
+        cy.get('[placeholder="Username"]').clear()
+        cy.get('[placeholder="Username"]').type('Test string2')
   
     })
 
       
     it('Select', () => {
-          cy.visit('https://practice.expandtesting.com/dropdown')  
-           cy.get('#country').select('BE')
-        cy.get('#country').select('Bahrain')
+         cy.visit('https://practice.expandtesting.com/dropdown')  
+         cy.get('#country').select('BE')
+         cy.get('#country').select('Bahrain')
   
     })
 
-
-          
+     
     it('Check', () => {
         cy.visit('https://practice.expandtesting.com/checkboxes')  
         //cy.get('#checkbox1').click();
@@ -30,7 +29,7 @@ describe('Advance queries', () => {
 
 
         it('scrollIntoView', () => {
-       cy.visit('https://www.saucedemo.com/')  
+        cy.visit('https://www.saucedemo.com/')  
         cy.get('[placeholder="Username"]').type('standard_user')
         cy.get('[placeholder="Password"]').type('secret_sauce')
         cy.get('[data-test="login-button"').as('loginButton')
@@ -42,7 +41,7 @@ describe('Advance queries', () => {
 
     
     it('submit', () => {
-       cy.visit('https://www.saucedemo.com/')  
+        cy.visit('https://www.saucedemo.com/')  
         cy.get('[placeholder="Username"]').type('standard_user')
         cy.get('[placeholder="Password"]').type('secret_sauce')
         cy.get('form').submit();
@@ -52,14 +51,14 @@ describe('Advance queries', () => {
     })
 
    it('selectfile', () => {
-       cy.visit('https://cgi-lib.berkeley.edu/ex/fup.html')  
+        cy.visit('https://cgi-lib.berkeley.edu/ex/fup.html')  
         cy.get('input[type=file]').selectFile('cypress/fixtures/example.json')
         cy.get('form').submit();
     })
 
 
         it('go', () => {
-       cy.visit('https://www.saucedemo.com/')  
+        cy.visit('https://www.saucedemo.com/')  
         cy.get('[placeholder="Username"]').type('standard_user')
         cy.get('[placeholder="Password"]').type('secret_sauce')
         cy.get('form').submit();
@@ -75,7 +74,7 @@ describe('Advance queries', () => {
         it('should', () => {
         cy.visit('https://www.saucedemo.com/')  
         cy.get('[data-test="username"]').should('have.attr', 'placeholder', 'Username') 
-         .should('have.css', 'background-color' , 'rgb(255, 255, 255)')
+            .should('have.css', 'background-color' , 'rgb(255, 255, 255)')
       
         cy.get('[placeholder="Password"]').type('secret_sauce')
    
@@ -89,5 +88,23 @@ describe('Advance queries', () => {
     expect(name).to.eq('Alice')
     })
    
+
+    it('Success login', ()=> {
+
+        cy.get('[data-test="username"]').type('standard_user');
+        cy.get('[placeholder="Password"]').type('secret_sauce');
+        cy.get('[data-test="login-button"]').click();
+        cy.get('[data-test="title"]').should('have.text','Products');
+        cy.url().should('include', 'inventory.html')
+    })
+
+       it('Error login', ()=> {
+
+        cy.get('[data-test="username"]').type('standard_user');
+        cy.get('[placeholder="Password"]').type('sect_sauce');
+        cy.get('[data-test="login-button"]').click();
+        cy.get('[data-test="error"]').invoke('text').should('eq','Epic sadface: Password is required');
+     
+    })
     
 })
