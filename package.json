@@ -7,19 +7,20 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "cy:open" : "cypress open",
+    "cy:open": "cypress open",
     "cy:run": "cypress run",
-  "test": "cypress run",
-  "test:open": "cypress open",
-  "test:record": "cypress run --record",
-  "test:reporter": "cypress run --reporter mochawesome",
-  "test:spec": "cypress run --spec",
-  "test:tag": "cypress run --tag",
-  "test:config": "cypress run --config",
-  "test:env": "cypress run --env",
-  "test:global": "cypress run --global"
+    "test": "cypress run",
+    "cy:dev": "cross-env NODE_ENV=development cypress open",
+    "cy:stage": "cross-env NODE_ENV=staging cypress open",
+    "cy:prod": "cross-env NODE_ENV=production cypress open"
   },
   "devDependencies": {
-    "cypress": "^15.3.0"
+    "cross-env": "^10.1.0",
+    "cypress": "^15.3.0",
+    "dotenv": "^17.2.3"
+  },
+  "dependencies": {
+    "cypress-mochawesome-reporter": "^4.0.2",
+    "mochawesome-report-generator": "^6.3.0"
   }
 }
