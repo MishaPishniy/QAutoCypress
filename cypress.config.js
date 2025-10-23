@@ -5,7 +5,7 @@ const envFile = `.env.${process.env.NODE_ENV || 'development'}`
 dotenv.config({ path: envFile })
 
 module.exports = defineConfig({
-  projectId: 'jezrdi',
+  projectId: 's16jjz',
   e2e: {
     baseUrl: process.env.BASE_URL,
     env: {
